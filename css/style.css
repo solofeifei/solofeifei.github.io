@@ -1104,7 +1104,6 @@ article .content blockquote p {
 }
 article .content blockquote:before {
   color: #fff;
-  content: "\201C";
   font-size: 2em;
   line-height: 0.1em;
   margin-right: 0.25em;
