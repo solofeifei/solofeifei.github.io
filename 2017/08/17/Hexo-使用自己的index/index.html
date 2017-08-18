@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="开题 玩儿GitHub很久了，但一直没有自己的主页和博客，感觉有点儿脱轨。最近有点儿闲来无事，折腾了一下GitHub Page。没用有官方的教程，用的是Hexo，简单方便。虽然是码农、搬砖的，但对美和个性也有那么一丝丝的追求。苦于不会前端，于是东拼西凑、左问右问搞出了一个自己还算满意的首页（index页）。想用自己的index+Hexo模式。但是用过Hexo（或其他）的人都知道，index页是模版">
+<meta name="keywords" content="Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 使用自己的index">
+<meta property="og:url" content="http://yoursite.com/2017/08/17/Hexo-使用自己的index/index.html">
+<meta property="og:site_name" content="SOLO">
+<meta property="og:description" content="开题 玩儿GitHub很久了，但一直没有自己的主页和博客，感觉有点儿脱轨。最近有点儿闲来无事，折腾了一下GitHub Page。没用有官方的教程，用的是Hexo，简单方便。虽然是码农、搬砖的，但对美和个性也有那么一丝丝的追求。苦于不会前端，于是东拼西凑、左问右问搞出了一个自己还算满意的首页（index页）。想用自己的index+Hexo模式。但是用过Hexo（或其他）的人都知道，index页是模版">
+<meta property="og:image" content="http://yoursite.com/2017/08/17/image/step1.png">
+<meta property="og:image" content="http://yoursite.com/2017/08/17/image/step2.png">
+<meta property="og:image" content="http://yoursite.com/2017/08/17/image/step3.png">
+<meta property="og:image" content="http://yoursite.com/2017/08/17/image/step4.png">
+<meta property="og:updated_time" content="2017-08-18T06:30:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo 使用自己的index">
+<meta name="twitter:description" content="开题 玩儿GitHub很久了，但一直没有自己的主页和博客，感觉有点儿脱轨。最近有点儿闲来无事，折腾了一下GitHub Page。没用有官方的教程，用的是Hexo，简单方便。虽然是码农、搬砖的，但对美和个性也有那么一丝丝的追求。苦于不会前端，于是东拼西凑、左问右问搞出了一个自己还算满意的首页（index页）。想用自己的index+Hexo模式。但是用过Hexo（或其他）的人都知道，index页是模版">
+<meta name="twitter:image" content="http://yoursite.com/2017/08/17/image/step1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Hexo 使用自己的index</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/solofeifei">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/08/17/Hexo-使用自己的index/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/08/17/Hexo-使用自己的index/&text=Hexo 使用自己的index"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/08/17/Hexo-使用自己的index/&title=Hexo 使用自己的index"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/08/17/Hexo-使用自己的index/&is_video=false&description=Hexo 使用自己的index"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Hexo 使用自己的index&body=Check out this article: http://yoursite.com/2017/08/17/Hexo-使用自己的index/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/08/17/Hexo-使用自己的index/&title=Hexo 使用自己的index"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/08/17/Hexo-使用自己的index/&title=Hexo 使用自己的index"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/08/17/Hexo-使用自己的index/&title=Hexo 使用自己的index"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/08/17/Hexo-使用自己的index/&title=Hexo 使用自己的index"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/08/17/Hexo-使用自己的index/&name=Hexo 使用自己的index&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#开题"><span class="toc-number">1.</span> <span class="toc-text">开题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题：怎么才能在Hexo模版中使用自己的主页呢？"><span class="toc-number">2.</span> <span class="toc-text">问题：怎么才能在Hexo模版中使用自己的主页呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后"><span class="toc-number">3.</span> <span class="toc-text">最后</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Hexo 使用自己的index
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">SOLO</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-08-17T12:18:29.000Z" itemprop="datePublished">2017-08-17</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Hexo/">Hexo</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="开题"><a href="#开题" class="headerlink" title="开题"></a>开题</h3><blockquote>
+<p>玩儿GitHub很久了，但一直没有自己的主页和博客，感觉有点儿脱轨。最近有点儿闲来无事，折腾了一下GitHub Page。没用有官方的教程，用的是Hexo，简单方便。虽然是码农、搬砖的，但对美和个性也有那么一丝丝的追求。苦于不会前端，于是东拼西凑、左问右问搞出了一个自己还算满意的首页（index页）。想用自己的index+Hexo模式。但是用过Hexo（或其他）的人都知道，index页是模版自动生成的，而且每次编译（hexo g）都会更新。好不容搞到了一个主页，还不能和Hexo模版搭配使用，难过。。。但也不甘心。</p>
+</blockquote>
+<h3 id="问题：怎么才能在Hexo模版中使用自己的主页呢？"><a href="#问题：怎么才能在Hexo模版中使用自己的主页呢？" class="headerlink" title="问题：怎么才能在Hexo模版中使用自己的主页呢？"></a>问题：怎么才能在Hexo模版中使用自己的主页呢？</h3><blockquote>
+<p>解决方式一：自己搞一套模版。声明，自己不会前端，想都没敢想。<br>解决方式二：看Hexo模版源码，由于做开发的，总想着index.html是在哪儿怎么生成的，修改一下名              字，只要不是index就可以了。这种方式是对的，但是Google、百度都没找到那段代码。<br>解决方式三：经历方式二后，眼睛都花了，但是突然看了一个配置文件，能修改index.html路径。心里美啊。。。只要把Hexo模版生的index路径修改成二级目录（只要不是在根目录下），GitHub就不会加载它了，然后再把自己index放到根目录下，哈哈大功告成。来看看步骤：  </p>
+<blockquote>
+<p>step1：在Hexo的根目录下找到下面文件</p>
+<p><img src="../image/step1.png" alt="step1">  </p>
+<p>step2: 更改该配置文件中的index.html文件的生成路径</p>
+<p><img src="../image/step2.png" alt="step1"></p>
+<p>step3: 把自己的index文件拷贝到Hexo模版生成的public根目录下</p>
+<p><img src="../image/step3.png" alt="step1"></p>
+</blockquote>
+</blockquote>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><blockquote>
+<p>1、这个路径blog/themes/cactus-dark/source/css下的_variables.styl文件可以修改全局的一些样式，如整个模版的背景颜色、字体颜色、字体大小等等。</p>
+<p><img src="../image/step4.png" alt="step1">  </p>
+<p>2、我的Hexo安装参考文章<a href="http://jeasonstudio.github.io/2016/05/26/Mac上搭建基于GitHub-Page的Hexo博客/" target="_blank" rel="external">http://jeasonstudio.github.io/2016/05/26/Mac上搭建基于GitHub-Page的Hexo博客/</a></p>
+</blockquote>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/solofeifei">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#开题"><span class="toc-number">1.</span> <span class="toc-text">开题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题：怎么才能在Hexo模版中使用自己的主页呢？"><span class="toc-number">2.</span> <span class="toc-text">问题：怎么才能在Hexo模版中使用自己的主页呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后"><span class="toc-number">3.</span> <span class="toc-text">最后</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/08/17/Hexo-使用自己的index/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/08/17/Hexo-使用自己的index/&text=Hexo 使用自己的index"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/08/17/Hexo-使用自己的index/&title=Hexo 使用自己的index"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/08/17/Hexo-使用自己的index/&is_video=false&description=Hexo 使用自己的index"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Hexo 使用自己的index&body=Check out this article: http://yoursite.com/2017/08/17/Hexo-使用自己的index/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/08/17/Hexo-使用自己的index/&title=Hexo 使用自己的index"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/08/17/Hexo-使用自己的index/&title=Hexo 使用自己的index"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/08/17/Hexo-使用自己的index/&title=Hexo 使用自己的index"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/08/17/Hexo-使用自己的index/&title=Hexo 使用自己的index"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/08/17/Hexo-使用自己的index/&name=Hexo 使用自己的index&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 SOLO
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/solofeifei">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
