@@ -13,14 +13,16 @@
 <meta property="og:url" content="http://yoursite.com/2017/09/19/用Systrace分析界面性能/index.html">
 <meta property="og:site_name" content="SOLO">
 <meta property="og:description" content="开题当我们在开发Android应用时，需要时时刻刻去检查在60fps的运行环境中，应用的运行是否流畅。如果我们的代码有性能问题，就会发生丢帧，造成“卡顿”现象。要解决这个问题的第一步就是：我们要知系统都做了些什么。 SystraceSystrace 工具可以捕获和显示自己APP的进程和其他系统进程的执行时间，从中帮我们分析出自己App的性能状况。Systrace 可以收集Android系统内核信息">
-<meta property="og:image" content="http://yoursite.com/2017/09/19/image/systrace_image001.png">
-<meta property="og:image" content="http://yoursite.com/2017/09/19/image/systrace_image002.png">
-<meta property="og:image" content="http://yoursite.com/2017/09/19/image/systrace_image003.png">
-<meta property="og:updated_time" content="2017-09-21T06:23:55.000Z">
+<meta property="og:image" content="http://yoursite.com/image/systrace_image001.png">
+<meta property="og:image" content="http://yoursite.com/image/systrace_image002.png">
+<meta property="og:image" content="http://yoursite.com/image/systrace_image003.png">
+<meta property="og:image" content="http://yoursite.com/image/systrace_image004.png">
+<meta property="og:image" content="http://yoursite.com/image/systrace_image005.png">
+<meta property="og:updated_time" content="2017-09-21T06:42:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Systrace分析界面性能">
 <meta name="twitter:description" content="开题当我们在开发Android应用时，需要时时刻刻去检查在60fps的运行环境中，应用的运行是否流畅。如果我们的代码有性能问题，就会发生丢帧，造成“卡顿”现象。要解决这个问题的第一步就是：我们要知系统都做了些什么。 SystraceSystrace 工具可以捕获和显示自己APP的进程和其他系统进程的执行时间，从中帮我们分析出自己App的性能状况。Systrace 可以收集Android系统内核信息">
-<meta name="twitter:image" content="http://yoursite.com/2017/09/19/image/systrace_image001.png">
+<meta name="twitter:image" content="http://yoursite.com/image/systrace_image001.png">
     
     
         
@@ -157,13 +159,13 @@
 <h4 id="用户界面方式"><a href="#用户界面方式" class="headerlink" title="用户界面方式"></a>用户界面方式</h4><p>1、手机连接到电脑上。</p>
 <p>2、打开Android Studio 运行应用程序到手机。</p>
 <p>3、从Android Studio上打开ADM：<strong>Tools -&gt; Android -&gt; Android Device Monitor</strong></p>
-<p><img src="../image/systrace_image001.png" alt="Android Studio Open ADM"></p>
-<p><img src="../image/systrace_image002.png" alt="ADM window"></p>
+<p><img src="/image/systrace_image001.png" alt="Android Studio Open ADM"></p>
+<p><img src="/image/systrace_image002.png" alt="ADM window"></p>
 <p>4、确保设备和应用的包名已经显示在ADM（DDMS）Step2。</p>
 <p>5、在ADM中点击DDMS按钮（因为Systrace是DDMS的工具之一）Step1。</p>
 <p>6、点击Systrace按钮 Step3。</p>
 <p>7、在弹出的Android System Trace弹窗中，选择一些捕获信息所必要的条件。</p>
-<p><img src="../image/systrace_image003.png" alt="Android System Trace"></p>
+<p><img src="/image/systrace_image003.png" alt="Android System Trace"></p>
 <ul>
 <li><strong>Destination File:</strong> 生成的HTML文件的保存路径及文件名称，默认是根目录，文件名为trace.html。</li>
 <li><strong>Trace Duration:</strong> Systrace执行捕获的时间。默认是5s，推荐合适时间是30s。</li>
@@ -182,60 +184,7 @@
 $ python systrace.py --time=10 mynewtrace.html sched gfx view wm
 </code></pre><p>添加sched这个category，是为了在生成的文件中显示出任务的名字。</p>
 <p>下表为Android4.3及以上系统中Systrace的命令参数：</p>
-<table>
-<thead>
-<tr>
-<th>命令参数</th>
-<th>参数解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-h,–help</td>
-<td>显示帮助信息       </td>
-</tr>
-<tr>
-<td>-o <code>&lt;file&gt;</code></td>
-<td>定义生成的html文件路径及名字</td>
-<td></td>
-</tr>
-<tr>
-<td>-t N ,–time=N</td>
-<td>设置Systrace捕获时间，默认是5s</td>
-<td></td>
-</tr>
-<tr>
-<td>-b N ,–buf-size=N</td>
-<td>设置收集数据的缓存大小，N KB</td>
-<td></td>
-</tr>
-<tr>
-<td>-k<code>&lt;KFUNCS&gt;</code>,–ktrace=<code>&lt;KFUNCS&gt;</code></td>
-<td>追踪特殊内核功能的运行情况，有多个时用逗号分隔</td>
-<td></td>
-</tr>
-<tr>
-<td>-l,–list-categories</td>
-<td>列出可用的category标签。主意，在不同设备上category有所不同。如果想在输出文件中显示出任务的名字，那么命令行中必须包含sched 标签。</td>
-<td></td>
-</tr>
-<tr>
-<td>-a<code>&lt;APP_NAME&gt;</code>,–app=<code>&lt;APP_NAME&gt;</code></td>
-<td>定义所要追踪的应用，用进程的名字。多个进程用逗号隔开</td>
-<td></td>
-</tr>
-<tr>
-<td>-from-file=<code>&lt;FROM_FILE&gt;</code></td>
-<td>从文件中生成报告文件</td>
-<td></td>
-</tr>
-<tr>
-<td>-e<code>&lt;DEVICE_SERIAL&gt;</code>,–serial=<code>&lt;DEVICE_SERIAL&gt;</code></td>
-<td>收集信息时候指定设备</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p><img src="/image/systrace_image004.png" alt="android4.3"></p>
 <h4 id="Android-4-2（API17）及以下版本"><a href="#Android-4-2（API17）及以下版本" class="headerlink" title="Android 4.2（API17）及以下版本"></a>Android 4.2（API17）及以下版本</h4><p>在Android4.2及以下系统中使用Systrace命令行分为两步：</p>
 <p>第一步：设置需要跟踪的category。</p>
 <p>第二步：执行Systrace。</p>
@@ -246,8 +195,7 @@ $ adb shell stop
 $ adb shell start
 $ python systrace.py --disk --time=10 -o mynewtrace.html
 </code></pre><p>下表为Android4.2（API17）及一下系统版本中，Systrace命令行参数：</p>
-<pre><code>命令参数         |参数解释
-</code></pre><p>————————|————————–|<br>-h,–help              |显示帮助信息<br>-o <code>&lt;file&gt;</code>         |定义生成的html文件路径及名字|<br>-t N ,–time=N      |设置Systrace捕获时间，默认是5s|<br>-b N ,–buf-size=N  |设置收集数据的缓存大小，N KB|<br>-d,–disk       |监控文件系统的I/O情况，需要root权限|<br>-f,–cpu-freq   |监控CPU频率的变化，仅会在CPU频率日志输出时开始监控，启动Systrace时CPU的初始频率的变化将忽略不计|<br>-i,–cpu-idle    |跟踪CPU的空闲事件|<br>-l,–cpu-load    |跟踪CPU的负载情况，值是一个百分比|<br>-s,–no-cpu-sched|禁止收集CPU的调度信息，这个参数主的作用是：长时间收集信息时缩减缓存中的数据量|<br>-u,–bus-utilization|跟踪总线的使用级别，这个需要root权限|<br>-w,–workqueue      |跟踪内核的工作队列|需要root权限|<br>–set-tags=<code>&lt;TAGS&gt;</code> |设置需要跟踪信息的类别标示，多个用逗号分隔。可用的类别有：<strong>gfx</strong>-Graphics ,<strong>input</strong> - Input,<strong>view</strong>-View,<strong>webview</strong>-WebView,<strong>wm</strong>-Window Manager,<strong>am</strong>-Activity Manager,<strong>sync</strong>-Synchronization Manager,<strong>audio</strong>-Audio,<strong>video</strong>-Video,<strong>camera</strong>-Camera  主意：设置完tag后，要暂停重新启动，参考上面的例子。</p>
+<p><img src="/image/systrace_image005.png" alt="android4.3"></p>
 <h2 id="浏览器查看HTML报告文件可用的快捷键"><a href="#浏览器查看HTML报告文件可用的快捷键" class="headerlink" title="浏览器查看HTML报告文件可用的快捷键"></a>浏览器查看HTML报告文件可用的快捷键</h2><table>
 <thead>
 <tr>
