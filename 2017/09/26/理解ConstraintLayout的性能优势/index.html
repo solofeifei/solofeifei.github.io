@@ -14,13 +14,13 @@
 <meta property="og:site_name" content="SOLO">
 <meta property="og:description" content="自从2016年的Google I/O上宣布了ConstraintLayout以来，开发人员不断的优化期性能及稳定性，同时又对布局编辑器做了很大的支持。在新版的支持包中（Android Support Library Revision 26.0.0 Alpha 1）添加很多新功能，用来实现复杂的布局。之前的百分比布局（android.support.percent）已经废弃，要用Constraint">
 <meta property="og:image" content="http://yoursite.com/image/constraintLayout001.gif">
-<meta property="og:image" content="http://yoursite.com/image/constraintLayout002.png">
-<meta property="og:image" content="http://yoursite.com/image/constraintLayout003.png">
-<meta property="og:image" content="http://yoursite.com/image/constraintLayout004.png">
-<meta property="og:image" content="http://yoursite.com/image/constraintLayout005.png">
-<meta property="og:image" content="http://yoursite.com/image/constraintLayout006.png">
-<meta property="og:image" content="http://yoursite.com/image/constraintLayout007.png">
-<meta property="og:updated_time" content="2017-10-13T10:03:07.000Z">
+<meta property="og:image" content="http://yoursite.com/image/constraintlayout002.png">
+<meta property="og:image" content="http://yoursite.com/image/constraintlayout003.png">
+<meta property="og:image" content="http://yoursite.com/image/constraintlayout004.png">
+<meta property="og:image" content="http://yoursite.com/image/constraintlayout005.png">
+<meta property="og:image" content="http://yoursite.com/image/constraintlayout006.png">
+<meta property="og:image" content="http://yoursite.com/image/constraintlayout007.png">
+<meta property="og:updated_time" content="2017-10-19T03:14:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解ConstraintLayout的性能优势">
 <meta name="twitter:description" content="自从2016年的Google I/O上宣布了ConstraintLayout以来，开发人员不断的优化期性能及稳定性，同时又对布局编辑器做了很大的支持。在新版的支持包中（Android Support Library Revision 26.0.0 Alpha 1）添加很多新功能，用来实现复杂的布局。之前的百分比布局（android.support.percent）已经废弃，要用Constraint">
@@ -159,20 +159,20 @@
 <p>上图演示了View的Measure过程。</p>
 <p>在画View的这个过程中，每一步都会从头到尾遍历整个View树，如果View树中嵌套View太多或嵌套层级太深，设备就会花更多的时间和计算量去绘制。为了保证App有一个流畅的用户体验，那么就要尽量保证布局文件的扁平，避免过多的嵌套。</p>
 <h3 id="传统布局层级的耗时缺点"><a href="#传统布局层级的耗时缺点" class="headerlink" title="传统布局层级的耗时缺点"></a>传统布局层级的耗时缺点</h3><p>为了更深刻的说明，我先用传统的LinearLayout 和 RelativeLayout写一个布局文件。效果如下：</p>
-<p><img src="/image/constraintLayout002.png" alt="view measure phase"></p>
+<p><img src="/image/constraintlayout002.png" alt="view measure phase"></p>
 <p>要用传统的布局容器写出上图效果，那么XML布局文件的层级大概如下（不包括元素属性）：</p>
-<p><img src="/image/constraintLayout003.png" alt="view measure phase"></p>
+<p><img src="/image/constraintlayout003.png" alt="view measure phase"></p>
 <p>尽管上面的这个XML布局结构还有优化的空间，但也避免不了大量View的层级嵌套。 接下来我们利用Android Studio的Systrace工具分析一下布局层级的嵌套是是如何影响UI性能的（<a href="http://solofeifei.github.io/2017/09/19/用Systrace分析界面性能/" target="_blank" rel="external">关于Systrace的使用可以看前面的文章</a>）。用自程序自动调用布局容器的measure 和 layout 过程，同时触发Systrace去执行收集信息。下面这行命令运行Systrace工具20秒，生成一个汇总文件（HTML文件），包含了一些很关键的信息，例如耗费时间的measure／layout过程。</p>
 <pre><code>python $ANDROID_HOME/platform-tools/systrace/systrace.py --time=20 -o ~/trace.html gfx view res
 </code></pre><p>得到的文件打开如下：</p>
-<p><img src="/image/constraintLayout004.png" alt="view measure phase"></p>
+<p><img src="/image/constraintlayout004.png" alt="view measure phase"></p>
 <p>在上图可看出Systrace 标出了该布局上大量的性能问题，同时也给出一些修改建议，点击Alert标签，可以看到绘制这个布局有高达80多次耗时的measure／layout操作（译者注：这里原作者说法有误，看测试代码就知道）。大量的耗时操作，会造成页面丢帧，用户会很明显的察觉到。由此可以断定这个布局性能差，而且所用到的RelativeLayout 会measure两次它的子view。</p>
 <p>整个测试代码在<a href="https://github.com/googlesamples/android-constraint-layout-performance" target="_blank" rel="external">GitHub</a></p>
 <h3 id="ConstraintLayout-的优势"><a href="#ConstraintLayout-的优势" class="headerlink" title="ConstraintLayout 的优势"></a>ConstraintLayout 的优势</h3><p>使用ConstraintLayout 写一个相同效果的布局文件，大体结构如下：</p>
-<p><img src="/image/constraintLayout005.png" alt="view measure phase"></p>
+<p><img src="/image/constraintlayout005.png" alt="view measure phase"></p>
 <p>从这个例子可以看出，完美避免了View的嵌套，整个布局结构完全扁平。这就是ConstraintLayout的牛x之处，能实现复杂的布局而且不用嵌套布局。</p>
 <p>同样，我们用Systarce工具测试一下使用ConstraintLayout写的布局，发现少了很多耗时的measure／layout 过程。如下图：</p>
-<p><img src="/image/constraintLayout006.png" alt="view measure phase"></p>
+<p><img src="/image/constraintlayout006.png" alt="view measure phase"></p>
 <p>而且ConstraintLayout可以用布局编辑器（layout editor）组织布局。用起来很方便，跟Xcode的storyboard相似。</p>
 <h3 id="量化性能上的差异"><a href="#量化性能上的差异" class="headerlink" title="量化性能上的差异"></a>量化性能上的差异</h3><p>我们用Android7.0（API 24）上的<strong>OnFrameMetricsAvailableListener</strong>分别测试了两种布局（ConstraintLayout 和 RelativeLayout）的measure和layout的时常，这个API可以在App 页面绘制时收集每帧的耗时信息。</p>
 <p>在App中添加如下代码：</p>
@@ -199,7 +199,7 @@ override fun onPause() {
 }
 </code></pre><p> 这是Kotlin代码。</p>
 <h3 id="测试的结果是：-ConstraintLayout-更快，性能更优"><a href="#测试的结果是：-ConstraintLayout-更快，性能更优" class="headerlink" title="测试的结果是： ConstraintLayout 更快，性能更优"></a>测试的结果是： ConstraintLayout 更快，性能更优</h3><p>从测试数据来看，ConstraintLayout在性能上比RelativeLayout提升了40%。</p>
-<p><img src="/image/constraintLayout007.png" alt="view measure phase"></p>
+<p><img src="/image/constraintlayout007.png" alt="view measure phase"></p>
 <p>从结果来看，ConstraintLayout要比传统布局性能好，而且还提供了其他高端功能来构建高性能、高复杂的布局，快快用起来吧！</p>
 
   </div>
